@@ -1,7 +1,7 @@
 #include <iostream>
 #include <locale>
 #include <string>
-using namespace std;
+
 
 // 1 (2. Сумма знаков.)
 // Дана сигнатура функции: int sumLastNums (int x);
@@ -191,11 +191,11 @@ bool sumTrio(int x, int y, int z) {
 
 
 // Функция возвращает строку с числом и правильным словом для возраста
-string age(int x) {
+std::string age(int x) {
     int lastDigit = x % 10;       // получаем последнюю цифру числа
     int lastTwoDigits = x % 100;  // получаем последние две цифры числа
 
-    string word;  // строка для хранения правильного окончания слова
+    std::string word;  // строка для хранения правильного окончания слова
 
     // Проверяем правила выбора окончания
     if (lastDigit == 1 && lastTwoDigits != 11) {
@@ -210,7 +210,7 @@ string age(int x) {
     }
 
     // Объединяем число и слово и возвращаем результат
-    return to_string(x) + " " + word;
+    return std::to_string(x) + " " + word;
 }
 
 
@@ -238,29 +238,29 @@ string age(int x) {
 // Функция выводит день недели и все последующие до воскресенья
 void printDays(int x) {
     switch (x) {
-    case 1:
-        cout << "понедельник" << endl;
-        [[fallthrough]];
-    case 2:
-        cout << "вторник" << endl;
-        [[fallthrough]];
-    case 3:
-        cout << "среда" << endl;
-        [[fallthrough]];
-    case 4:
-        cout << "четверг" << endl;
-        [[fallthrough]];
-    case 5:
-        cout << "пятница" << endl;
-        [[fallthrough]];
-    case 6:
-        cout << "суббота" << endl;
-        [[fallthrough]];
-    case 7:
-        cout << "воскресенье" << endl;
-        break;
-    default:
-        cout << "это не день недели" << endl;
+        case 1:
+            std::cout << "понедельник" << std::endl;
+            [[fallthrough]];
+        case 2:
+            std::cout << "вторник" << std::endl;
+            [[fallthrough]];
+        case 3:
+            std::cout << "среда" << std::endl;
+            [[fallthrough]];
+        case 4:
+            std::cout << "четверг" << std::endl;
+            [[fallthrough]];
+        case 5:
+            std::cout << "пятница" << std::endl;
+            [[fallthrough]];
+        case 6:
+            std::cout << "суббота" << std::endl;
+            [[fallthrough]];
+        case 7:
+            std::cout << "воскресенье" << std::endl;
+            break;
+        default:
+            std::cout << "это не день недели" << std::endl;
     }
 }
 
@@ -276,8 +276,8 @@ void printDays(int x) {
 
 
 // Функция возвращает строку с числами от x до 0 (включительно)
-string reverseListNums(int x) {
-    string result = "";  // создаём пустую строку 
+std::string reverseListNums(int x) {
+    std::string result = "";  // создаём пустую строку 
 
     // Цикл от x до 0, включительно
     for (int i = x; i >= 0; i--) {
@@ -364,9 +364,9 @@ bool equalNum(int x) {
 void leftTriangle(int x) {
     for (int i = 1; i <= x; i++) {       // строки от 1 до x
         for (int j = 1; j <= i; j++) {   // количество '*' в строке равно номеру строки
-            cout << "*";
+            std::cout << "*";
         }
-        cout << endl;                     // переход на следующую строку
+        std::cout << std::endl;                     // переход на следующую строку
     }
 }
 
@@ -396,176 +396,176 @@ void guessGame(int seed) {
 
     // Цикл продолжается, пока пользователь не угадает число
     do {
-        cout << "Введите число от 0 до 9: ";
-        cin >> guess;        // считываем ввод пользователя
+        std::cout << "Введите число от 0 до 9: ";
+        std::cin >> guess;        // считываем ввод пользователя
         attempts++;          // увеличиваем количество попыток
 
         if (guess != target) {
-            cout << "Вы не угадали, попробуйте снова." << endl;
+            std::cout << "Вы не угадали, попробуйте снова." << std::endl;
         }
     } while (guess != target);  // условие выхода из цикла
 
     // Если цикл завершён, значит пользователь угадал число
-    cout << "Вы угадали!" << endl;
-    cout << "Вы отгадали число за " << attempts << " попыток." << endl;
+    std::cout << "Вы угадали!" << std::endl;
+    std::cout << "Вы отгадали число за " << attempts << " попыток." << std::endl;
 }
 
 int main() {
   setlocale(LC_ALL, "Russian"); // включаем поддержку русского языка
 
     while (true) {
-        cout << "\nМеню:\n";
-        cout << "1. Сумма двух последних цифр числа\n";
-        cout << "2. Проверка: положительное ли число\n";
-        cout << "3. Проверка: заглавная ли буква\n";
-        cout << "4. Проверка: делит ли одно число другое\n";
-        cout << "5. Последовательная сумма последних цифр (5 чисел)\n";
-        cout << "6. Безопасное деление\n";
-        cout << "7. Строка сравнения\n";
-        cout << "8. Тройная сумма\n";
-        cout << "9. Возраст\n";
-        cout << "10. Дни недели\n";
-        cout << "11. Числа наоборот.\n";
-        cout << "12. Степень числа.\n";
-        cout << "13. Одинаковость.\n";
-        cout << "14. Левый треугольник.\n";
-        cout << "15. Угадайка.\n";
-        cout << "0. Выход\n";
-
+        std::cout << "\nМеню:\n";
+        std::cout << "1. Сумма двух последних цифр числа\n";
+        std::cout << "2. Проверка: положительное ли число\n";
+        std::cout << "3. Проверка: заглавная ли буква\n";
+        std::cout << "4. Проверка: делит ли одно число другое\n";
+        std::cout << "5. Последовательная сумма последних цифр (5 чисел)\n";
+        std::cout << "6. Безопасное деление\n";
+        std::cout << "7. Строка сравнения\n";
+        std::cout << "8. Тройная сумма\n";
+        std::cout << "9. Возраст\n";
+        std::cout << "10. Дни недели\n";
+        std::cout << "11. Числа наоборот\n";
+        std::cout << "12. Степень числа\n";
+        std::cout << "13. Одинаковость\n";
+        std::cout << "14. Левый треугольник\n";
+        std::cout << "15. Угадайка\n";
+        std::cout << "0. Выход\n";
+        
         int choice;
-        cout << "Выберите задачу: ";
-        cin >> choice;
+        std::cout << "Выберите задачу: ";
+        std::cin >> choice;
 
         switch (choice) {
             case 1: {
                 int n;
-                cout << "Введите число (число > 10): ";
-                cin >> n;
+                std::cout << "Введите число (число > 10): ";
+                std::cin >> n;
                 if (n > -10 && n < 10) {
-                    cout << "Ошибка: нужно хотя бы двухзначное число." << endl;
+                    std::cout << "Ошибка: нужно хотя бы двухзначное число." << std::endl;
                 } else {
-                    cout << "Сумма двух последних цифр: " << sumLastDigits(n) << endl;
+                    std::cout << "Сумма двух последних цифр: " << sumLastDigits(n) << std::endl;
                 }
                 break;
             }
             case 2: {
                 int n;
-                cout << "Введите число: ";
-                cin >> n;
-                cout << (isPositive(n) ? "true" : "false") << endl;
+                std::cout << "Введите число: ";
+                std::cin >> n;
+                std::cout << (isPositive(n) ? "true" : "false") << std::endl;
                 break;
             }
             case 3: {
                 char c;
-                cout << "Введите символ: ";
-                cin >> c;
-                cout << (isUpperCase(c) ? "true" : "false") << endl;
+                std::cout << "Введите символ: ";
+                std::cin >> c;
+                std::cout << (isUpperCase(c) ? "true" : "false") << std::endl;
                 break;
             }
             case 4: {
                 int a, b;
-                cout << "Введите число a: ";
-                cin >> a;
-                cout << "Введите число b: ";
-                cin >> b;
-                cout << (isDivisor(a, b) ? "true" : "false") << endl;
+                std::cout << "Введите число a: ";
+                std::cin >> a;
+                std::cout << "Введите число b: ";
+                std::cin >> b;
+                std::cout << (isDivisor(a, b) ? "true" : "false") << std::endl;
                 break;
             }
             case 5: {
                 int n1, n2, n3, n4, n5;
-                cout << "Введите 1 число: "; cin >> n1;
-                cout << "Введите 2 число: "; cin >> n2;
+                std::cout << "Введите 1 число: "; std::cin >> n1;
+                std::cout << "Введите 2 число: "; std::cin >> n2;
                 int result = lastDigitSum(n1, n2);
-                cout << n1 << " + " << n2 << " → " << result << endl;
+                std::cout << n1 << " + " << n2 << " → " << result << std::endl;
 
-                cout << "Введите 3 число: "; cin >> n3;
+                std::cout << "Введите 3 число: "; std::cin >> n3;
                 result = lastDigitSum(result, n3);
-                cout << result << " + " << n3 << " → " << result << endl;
+                std::cout << result << " + " << n3 << " → " << result << std::endl;
 
-                cout << "Введите 4 число: "; cin >> n4;
+                std::cout << "Введите 4 число: "; std::cin >> n4;
                 result = lastDigitSum(result, n4);
-                cout << result << " + " << n4 << " → " << result << endl;
+                std::cout << result << " + " << n4 << " → " << result << std::endl;
 
-                cout << "Введите 5 число: "; cin >> n5;
+                std::cout << "Введите 5 число: "; std::cin >> n5;
                 result = lastDigitSum(result, n5);
-                cout << result << " + " << n5 << " → " << result << endl;
+                std::cout << result << " + " << n5 << " → " << result << std::endl;
 
-                cout << "Итого: " << result << endl;
+                std::cout << "Итого: " << result << std::endl;
                 break;
             }
             case 6: {
                 int x, y;
-                cout << "Введите делимое x: "; cin >> x;
-                cout << "Введите делитель y: "; cin >> y;
+                std::cout << "Введите делимое x: "; std::cin >> x;
+                std::cout << "Введите делитель y: "; std::cin >> y;
                 double res = safeDiv(x, y);
-                cout << "Результат деления: " << res << endl;
+                std::cout << "Результат деления: " << res << std::endl;
                 break;
             }
             case 7: { 
                 int a, b;
-                cout << "Введите число a: "; cin >> a;
-                cout << "Введите число b: "; cin >> b;
+                std::cout << "Введите число a: "; std::cin >> a;
+                std::cout << "Введите число b: "; std::cin >> b;
                 string res = makeDecision(a, b);
-                cout << "Результат: " << res << endl;
+                std::cout << "Результат: " << res << std::endl;
                 break;
             }
             case 8: {
                 int a, b, c;
-                cout << "Введите число a: "; cin >> a;
-                cout << "Введите число b: "; cin >> b;
-                cout << "Введите число c: "; cin >> c;
-                cout << (sumTrio(a, b, c) ? "true" : "false") << endl;
+                std::cout << "Введите число a: "; std::cin >> a;
+                std::cout << "Введите число b: "; std::cin >> b;
+                std::cout << "Введите число c: "; std::cin >> c;
+                std::cout << (sumTrio(a, b, c) ? "true" : "false") << std::endl;
                 break;
             }
             case 9: {
                 int n;
-                cout << "Введите возраст: "; cin >> n;
-                cout << age(n) << endl;
+                std::cout << "Введите возраст: "; std::cin >> n;
+                std::cout << age(n) << std::endl;
                 break;
             }
             case 10: {
                 int day;
-                cout << "Введите номер дня недели (1-7): "; cin >> day;
+                std::cout << "Введите номер дня недели (1-7): "; std::cin >> day;
                 printWeekDays(day);
                 break;
             }
             case 11: {
                 int n;
-                cout << "Введите число: "; cin >> n;
-                cout << reverseListNums(n) << endl;
+                std::cout << "Введите число: "; std::cin >> n;
+                std::cout << reverseListNums(n) << std::endl;
                 break;
             }
             case 12: {
                 int base, exp;
-                cout << "Введите число x: "; cin >> base;
-                cout << "Введите степень y: "; cin >> exp;
-                cout << base << " в степени " << exp << " = " << powInt(base, exp) << endl;
+                std::cout << "Введите число x: "; std::cin >> base;
+                std::cout << "Введите степень y: "; std::cin >> exp;
+                std::cout << base << " в степени " << exp << " = " << powInt(base, exp) << std::endl;
                 break;
             }
             case 13: {
                 int n;
-                cout << "Введите число: "; cin >> n;
-                cout << (equalNum(n) ? "true" : "false") << endl;
+                std::cout << "Введите число: "; std::cin >> n;
+                std::cout << (equalNum(n) ? "true" : "false") << std::endl;
                 break;
             }
             case 14: {
                 int n;
-                cout << "Введите высоту треугольника: "; cin >> n;
+                std::cout << "Введите высоту треугольника: "; std::cin >> n;
                 leftTriangle(n);
                 break;
             }
             case 15: {
                 int seed;
-                cout << "Введите любое число для генерации случайного числа: ";
-                cin >> seed;
+                std::cout << "Введите любое число для генерации случайного числа: ";
+                std::cin >> seed;
                 guessGame(seed);
                 break;
             }
             case 0:
-                cout << "Выход из программы.\n";
+                std::cout << "Выход из программы.\n";
                 return 0;
             default:
-                cout << "Нет такой задачи.\n";
+                std::cout << "Нет такой задачи.\n";
                 break;
         }
     }
