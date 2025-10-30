@@ -71,7 +71,7 @@ bool IsUpperCase(char x) {
 // Функция проверяет, делит ли одно число другое нацело
 bool IsDivisor(int a, int b) {
     if (a == 0 || b == 0) {
-        return false;
+        return true;
     }
     return (a % b == 0) || (b % a == 0);
 }
@@ -142,11 +142,9 @@ double SafeDiv(int x, int y) {
 std::string MakeDecision(int x, int y) {
     if (x > y) {
         return std::to_string(x) + " > " + std::to_string(y);
-    }
-    else if (x < y) {
+    } else if (x < y) {
         return std::to_string(x) + " < " + std::to_string(y);
-    }
-    else {
+    } else {
         return std::to_string(x) + " == " + std::to_string(y);
     }
 }
@@ -214,12 +212,10 @@ std::string Age(int x) {
 
     if (last_digit == 1 && last_two != 11) {
         word = "год";
-    }
-    else if ((last_digit >= 2 && last_digit <= 4) &&
+    } else if ((last_digit >= 2 && last_digit <= 4) &&
         !(last_two >= 12 && last_two <= 14)) {
         word = "года";
-    }
-    else {
+    } else {
         word = "лет";
     }
 
@@ -443,13 +439,13 @@ void GuessGame(int seed) {
         std::cout << "15. Угадайка\n";
         std::cout << "0. Выход\n";
 
-        int choice; 
+        int choice = 0; 
         std::cout << "Выберите задачу: ";
         std::cin >> choice;
 
         switch (choice) {
         case 1: {
-            int n;
+            int n = 0;
             std::cout << "Введите число (> 10): ";
             std::cin >> n;
             if (n > -10 && n < 10) {
@@ -461,7 +457,7 @@ void GuessGame(int seed) {
             break;
         }
         case 2: {
-            int n;
+            int n = 0;
             std::cout << "Введите число: ";
             std::cin >> n;
             std::cout << (IsPositive(n) ? "true\n" : "false\n");
@@ -475,7 +471,7 @@ void GuessGame(int seed) {
             break;
         }
         case 4: {
-            int a, b;
+            int a = 0, b = 0;
             std::cout << "Введите число a: ";
             std::cin >> a;
             std::cout << "Введите число b: ";
@@ -484,7 +480,7 @@ void GuessGame(int seed) {
             break;
         }
         case 5: {
-            int n1, n2, n3, n4, n5;
+            int n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0;
             std::cout << "Введите 1 число: ";
             std::cin >> n1;
             std::cout << "Введите 2 число: ";
@@ -509,7 +505,7 @@ void GuessGame(int seed) {
             break;
         }
         case 6: {
-            int x, y;
+            int x = 0, y = 0;
             std::cout << "Введите делимое x: ";
             std::cin >> x;
             std::cout << "Введите делитель y: ";
@@ -518,7 +514,7 @@ void GuessGame(int seed) {
             break;
         }
         case 7: {
-            int a, b;
+            int a = 0, b = 0;
             std::cout << "Введите число a: ";
             std::cin >> a;
             std::cout << "Введите число b: ";
@@ -527,7 +523,7 @@ void GuessGame(int seed) {
             break;
         }
         case 8: {
-            int a, b, c;
+            int a = 0, b = 0, c = 0;
             std::cout << "Введите число a: ";
             std::cin >> a;
             std::cout << "Введите число b: ";
@@ -538,28 +534,28 @@ void GuessGame(int seed) {
             break;
         }
         case 9: {
-            int n;
+            int n = 0;
             std::cout << "Введите возраст: ";
             std::cin >> n;
             std::cout << Age(n) << "\n";
             break;
         }
         case 10: {
-            int day;
+            int day = 0;
             std::cout << "Введите номер дня недели (1-7): ";
             std::cin >> day;
             PrintDays(day);
             break;
         }
         case 11: {
-            int n;
+            int n = 0;
             std::cout << "Введите число: ";
             std::cin >> n;
             std::cout << ReverseListNums(n) << "\n";
             break;
         }
         case 12: {
-            int base, exp;
+            int base = 0, exp = 0;
             std::cout << "Введите число x: ";
             std::cin >> base;
             std::cout << "Введите степень y: ";
@@ -569,21 +565,21 @@ void GuessGame(int seed) {
             break;
         }
         case 13: {
-            int n;
+            int n = 0;
             std::cout << "Введите число: ";
             std::cin >> n;
             std::cout << (EqualNum(n) ? "true\n" : "false\n");
             break;
         }
         case 14: {
-            int n;
+            int n = 0;
             std::cout << "Введите высоту треугольника: ";
             std::cin >> n;
             LeftTriangle(n);
             break;
         }
         case 15: {
-            int seed;
+            int seed = 0;
             std::cout << "Введите любое число для генерации случайного числа: ";
             std::cin >> seed;
             GuessGame(seed);
