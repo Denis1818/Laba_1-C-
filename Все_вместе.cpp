@@ -403,22 +403,22 @@ void LeftTriangle(int x) {
 
 // Функция угадайки
 void GuessGame(int seed) {
-    int target = (seed * 7 + 3) % 10;
-    int guess;
-    int attempts = 0;
+    int zagadano_chislo = (seed * 7 + 3) % 10;
+    int polzovat_chislo;
+    int poptki = 0;
 
     do {
         std::cout << "Введите число от 0 до 9: ";
-        std::cin >> guess;
-        ++attempts;
+        std::cin >> polzovat_chislo;
+        ++poptki;
 
-        if (guess != target) {
+        if (polzovat_chislo != zagadano_chislo) {
             std::cout << "Вы не угадали, попробуйте снова.\n";
         }
-    } while (guess != target);
+    } while (polzovat_chislo != zagadano_chislo);
 
     std::cout << "Вы угадали!\n";
-    std::cout << "Вы отгадали число за " << attempts << " попыток.\n";
+    std::cout << "Вы отгадали число за " << poptki << " попыток.\n";
 }
 
     int main() {
