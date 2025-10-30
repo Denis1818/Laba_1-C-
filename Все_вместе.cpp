@@ -1,5 +1,5 @@
-#include <iostream>
-#include <locale>
+#include <iostream> // используется для ввода и вывода 
+#include <locale> //нужна для поддержки русского языка 
 #include <string>
 
 
@@ -15,11 +15,12 @@
 // результат: 14
 
 // Функция для сложения двух последних цифр числа
-int sumLastNums(int x) {
-    int last = x % 10;            // последняя цифра
-    int predLast = (x / 10) % 10; // предпоследняя цифра
-    return last + predLast;
+int SumLastNums(int x) {
+    int last = x % 10;
+    int pred_last = (x / 10) % 10;
+    return last + pred_last;
 }
+
 
 
 // 2 (4. Есть ли позитив.)
@@ -34,8 +35,8 @@ int sumLastNums(int x) {
 // результат: false
 
 // Функция проверяет, является ли число положительным
-bool isPositive(int x) {
-    return x > 0;  // возвращает true, если x > 0, иначе false
+bool IsPositive(int x) {
+    return x > 0;
 }
 
 
@@ -51,9 +52,10 @@ bool isPositive(int x) {
 // результат: false
 
 // Функция проверяет, является ли символ большой буквой от 'A' до 'Z'
-bool isUpperCase(char x) {
-    return x >= 'A' && x <= 'Z';  // true, если x в диапазоне 'A'-'Z'
+bool IsUpperCase(char x) {
+    return x >= 'A' && x <= 'Z';
 }
+
 
 // 4 (8. Делитель.)
 // Дана сигнатура функции: bool isDivisor (int a, int b);
@@ -67,10 +69,13 @@ bool isUpperCase(char x) {
 // результат: false
 
 // Функция проверяет, делит ли одно число другое нацело
-bool isDivisor(int a, int b) {
-    if (a == 0 || b == 0) return false; // деление на ноль невозможно
-    return (a % b == 0) || (b % a == 0); // true, если a делит b или b делит a
+bool IsDivisor(int a, int b) {
+    if (a == 0 || b == 0) {
+        return false;
+    }
+    return (a % b == 0) || (b % a == 0);
 }
+
 
 
 // 5 (10 Многократный вызов.)
@@ -88,9 +93,10 @@ bool isDivisor(int a, int b) {
 // Итого 4
 
 // Функция считает сумму цифр единиц двух чисел
-int lastNumSum(int a, int b) {
-    return (a % 10) + (b % 10);  // сумма последних цифр
+int LastNumSum(int a, int b) {
+    return (a % 10) + (b % 10);
 }
+
 
 
 // ЗАДАНИЕ 2 //
@@ -109,13 +115,13 @@ int lastNumSum(int a, int b) {
 
 
 // Функция безопасного деления
-double safeDiv(int x, int y) {
+double SafeDiv(int x, int y) {
     if (y == 0) {
-        return 0;  // защита от деления на 0
+        return 0.0;
     }
-    return static_cast<double>(x) / y;  // обычное деление
+    return static_cast<double>(x) / y;
 }
-
+   
 
 // 7 (4. Строка сравнения.)
 // Дана сигнатура функции: String makeDecision (int x, int y);
@@ -133,17 +139,18 @@ double safeDiv(int x, int y) {
 // результат: “4==4”
 
     // Функция формирует строку с результатом сравнения двух чисел
-std::string makeDecision(int x, int y) {
+std::string MakeDecision(int x, int y) {
     if (x > y) {
-        return std::to_string(x) + " >" + std::to_string(y);
+        return std::to_string(x) + " > " + std::to_string(y);
     }
     else if (x < y) {
-        return std::to_string(x) + "< " + std::to_string(y);
+        return std::to_string(x) + " < " + std::to_string(y);
     }
     else {
-        return std::to_string(x) + "==" + std::to_string(y);
+        return std::to_string(x) + " == " + std::to_string(y);
     }
 }
+   
 
 
 // 8 (6. Тройная сумма.)
@@ -159,11 +166,20 @@ std::string makeDecision(int x, int y) {
 // результат: false
 
 // Функция проверяет, можно ли сложить два числа, чтобы получить третье
-bool sumTrio(int x, int y, int z) {
-    if (x + y == z) return true;  // x + y равно z
-    if (x + z == y) return true;  // x + z равно y
-    if (y + z == x) return true;  // y + z равно x
-    return false;                 // ни одно условие не выполнено
+bool SumTrio(int x, int y, int z) {
+    if (x + y == z)
+    {
+        return true;
+    }  
+    if (x + z == y) { 
+        return true; 
+    }  
+    if (y + z == x) { 
+        return true; 
+    }  
+    {
+        return false;
+    }
 }
 
 
@@ -191,25 +207,22 @@ bool sumTrio(int x, int y, int z) {
 
 
 // Функция возвращает строку с числом и правильным словом для возраста
-std::string age(int x) {
-    int lastDigit = x % 10;       // получаем последнюю цифру числа
-    int lastTwoDigits = x % 100;  // получаем последние две цифры числа
+std::string Age(int x) {
+    int last_digit = x % 10;
+    int last_two = x % 100;
+    std::string word;
 
-    std::string word;  // строка для хранения правильного окончания слова
-
-    // Проверяем правила выбора окончания
-    if (lastDigit == 1 && lastTwoDigits != 11) {
-        word = "год";  // если число оканчивается на 1, кроме 11
+    if (last_digit == 1 && last_two != 11) {
+        word = "год";
     }
-    else if ((lastDigit >= 2 && lastDigit <= 4) &&
-        !(lastTwoDigits >= 12 && lastTwoDigits <= 14)) {
-        word = "года";  // если число оканчивается на 2-4, кроме 12-14
+    else if ((last_digit >= 2 && last_digit <= 4) &&
+        !(last_two >= 12 && last_two <= 14)) {
+        word = "года";
     }
     else {
-        word = "лет";  // во всех остальных случаях
+        word = "лет";
     }
 
-    // Объединяем число и слово и возвращаем результат
     return std::to_string(x) + " " + word;
 }
 
@@ -236,31 +249,31 @@ std::string age(int x) {
 
 
 // Функция выводит день недели и все последующие до воскресенья
-void printDays(int x) {
+void PrintDays(int x) {
     switch (x) {
     case 1:
-        std::cout << "понедельник" << std::endl;
+        std::cout << "понедельник\n";
         [[fallthrough]];
     case 2:
-        std::cout << "вторник" << std::endl;
+        std::cout << "вторник\n";
         [[fallthrough]];
     case 3:
-        std::cout << "среда" << std::endl;
+        std::cout << "среда\n";
         [[fallthrough]];
     case 4:
-        std::cout << "четверг" << std::endl;
+        std::cout << "четверг\n";
         [[fallthrough]];
     case 5:
-        std::cout << "пятница" << std::endl;
+        std::cout << "пятница\n";
         [[fallthrough]];
     case 6:
-        std::cout << "суббота" << std::endl;
+        std::cout << "суббота\n";
         [[fallthrough]];
     case 7:
-        std::cout << "воскресенье" << std::endl;
+        std::cout << "воскресенье\n";
         break;
     default:
-        std::cout << "это не день недели" << std::endl;
+        std::cout << "это не день недели\n";
     }
 }
 
@@ -276,19 +289,17 @@ void printDays(int x) {
 
 
 // Функция возвращает строку с числами от x до 0 (включительно)
-std::string reverseListNums(int x) {
-    std::string result = "";  // создаём пустую строку 
-
-    // Цикл от x до 0, включительно
-    for (int i = x; i >= 0; i--) {
-        result += std::to_string(i);  // преобразуем число в строку и добавляем к результату
+std::string ReverseListNums(int x) {
+    std::string result;
+    for (int i = x; i >= 0; --i) {
+        result += std::to_string(i);
         if (i != 0) {
-            result += " ";       // добавляем пробел между числами, кроме последнего
+            result += " ";
         }
     }
-
     return result;
 }
+
 
 
 // 12 (4. Степень числа.)
@@ -304,13 +315,14 @@ std::string reverseListNums(int x) {
 
 
 // Функция возводит x в степень y
-int pow(int x, int y) {
-    int result = 1;  // начинаем с 1
-    for (int i = 0; i < y; i++) {
-        result *= x;  // умножаем result на x y раз
+int Pow(int x, int y) {
+    int result = 1;
+    for (int i = 0; i < y; ++i) {
+        result *= x;
     }
     return result;
 }
+
 
 
 // 13 (6. Одинаковость.)
@@ -329,16 +341,19 @@ int pow(int x, int y) {
 
 
 // Функция проверяет, одинаковы ли все цифры числа
-bool equalNum(int x) {
-    int lastDigit = x % 10;  // берём последнюю цифру
+bool EqualNum(int x) {
+    int last_digit = x % 10;
     x /= 10;
 
-    while (x != 0) {          // продолжаем, пока есть цифры
-        if (x % 10 != lastDigit) return false;  // если цифра отличается — false
-        x /= 10;              // убираем последнюю цифру
+    while (x != 0) {
+        if (x % 10 != last_digit) {
+            return false;
+        }
+        x /= 10;
     }
-    return true;               // все цифры одинаковы
+    return true;
 }
+
 
 
 // 14 (8. Левый треугольник.)
@@ -361,15 +376,14 @@ bool equalNum(int x) {
 
 
 // Функция выводит левый треугольник высотой x
-void leftTriangle(int x) {
-    for (int i = 1; i <= x; i++) {       // строки от 1 до x
-        for (int j = 1; j <= i; j++) {   // количество '*' в строке равно номеру строки
+void LeftTriangle(int x) {
+    for (int i = 1; i <= x; ++i) {
+        for (int j = 1; j <= i; ++j) {
             std::cout << "*";
         }
-        std::cout << std::endl;                     // переход на следующую строку
+        std::cout << std::endl;
     }
 }
-
 
 // 15 (10. Угадайка.)
 // Дана сигнатура функции: void guessGame()
@@ -388,30 +402,27 @@ void leftTriangle(int x) {
 // Вы отгадали число за 2 попытки
 
 // Функция угадайки
-// target вычисляется через формулу: (seed * 7 + 3) % 10
-void guessGame(int seed) {
-    int target = (seed * 7 + 3) % 10;  // число, которое нужно угадать (0–9)
-    int guess;                          // число, введённое пользователем
-    int attempts = 0;                    // счётчик попыток
+void GuessGame(int seed) {
+    int target = (seed * 7 + 3) % 10;
+    int guess;
+    int attempts = 0;
 
-    // Цикл продолжается, пока пользователь не угадает число
     do {
         std::cout << "Введите число от 0 до 9: ";
-        std::cin >> guess;        // считываем ввод пользователя
-        attempts++;          // увеличиваем количество попыток
+        std::cin >> guess;
+        ++attempts;
 
         if (guess != target) {
-            std::cout << "Вы не угадали, попробуйте снова." << std::endl;
+            std::cout << "Вы не угадали, попробуйте снова.\n";
         }
-    } while (guess != target);  // условие выхода из цикла
+    } while (guess != target);
 
-    // Если цикл завершён, значит пользователь угадал число
-    std::cout << "Вы угадали!" << std::endl;
-    std::cout << "Вы отгадали число за " << attempts << " попыток." << std::endl;
+    std::cout << "Вы угадали!\n";
+    std::cout << "Вы отгадали число за " << attempts << " попыток.\n";
 }
 
-int main() {
-    setlocale(LC_ALL, "Russian"); // включаем поддержку русского языка
+    int main() {
+    setlocale(LC_ALL, "Russian"); 
 
     while (true) {
         std::cout << "\nМеню:\n";
@@ -432,21 +443,20 @@ int main() {
         std::cout << "15. Угадайка\n";
         std::cout << "0. Выход\n";
 
-        int choice; //номера выбранной задачи
+        int choice; 
         std::cout << "Выберите задачу: ";
         std::cin >> choice;
 
         switch (choice) {
         case 1: {
             int n;
-            std::cout << "Введите число (число > 10): ";
+            std::cout << "Введите число (> 10): ";
             std::cin >> n;
-            //Проверка на двухзначность числа
-            if (n > -10 && n < 10) { 
-                std::cout << "Ошибка: нужно хотя бы двухзначное число." << std::endl;
+            if (n > -10 && n < 10) {
+                std::cout << "Ошибка: нужно хотя бы двухзначное число.\n";
             }
             else {
-                std::cout << "Сумма двух последних цифр: " << sumLastNums(n) << std::endl;
+                std::cout << "Сумма двух последних цифр: " << SumLastNums(n) << "\n";
             }
             break;
         }
@@ -454,14 +464,14 @@ int main() {
             int n;
             std::cout << "Введите число: ";
             std::cin >> n;
-            std::cout << (isPositive(n) ? "true" : "false") << std::endl;
+            std::cout << (IsPositive(n) ? "true\n" : "false\n");
             break;
         }
         case 3: {
             char c;
             std::cout << "Введите символ: ";
             std::cin >> c;
-            std::cout << (isUpperCase(c) ? "true" : "false") << std::endl;
+            std::cout << (IsUpperCase(c) ? "true\n" : "false\n");
             break;
         }
         case 4: {
@@ -470,97 +480,113 @@ int main() {
             std::cin >> a;
             std::cout << "Введите число b: ";
             std::cin >> b;
-            std::cout << (isDivisor(a, b) ? "true" : "false") << std::endl;
+            std::cout << (IsDivisor(a, b) ? "true\n" : "false\n");
             break;
         }
         case 5: {
             int n1, n2, n3, n4, n5;
-            std::cout << "Введите 1 число: "; std::cin >> n1;
-            std::cout << "Введите 2 число: "; std::cin >> n2;
-            int result = lastNumSum(n1, n2);
-            std::cout << n1 << " + " << n2 << " = " << result << std::endl;
+            std::cout << "Введите 1 число: ";
+            std::cin >> n1;
+            std::cout << "Введите 2 число: ";
+            std::cin >> n2;
+            int result = LastNumSum(n1, n2);
+            std::cout << "Промежуточный результат: " << result << "\n";
 
-            std::cout << "Введите 3 число: "; std::cin >> n3;
-            result = lastNumSum(result, n3);
-            std::cout << result << " + " << n3 << " = " << result << std::endl;
+            std::cout << "Введите 3 число: ";
+            std::cin >> n3;
+            result = LastNumSum(result, n3);
+            std::cout << "Промежуточный результат: " << result << "\n";
 
-            std::cout << "Введите 4 число: "; std::cin >> n4;
-            result = lastNumSum(result, n4);
-            std::cout << result << " + " << n4 << " = " << result << std::endl;
+            std::cout << "Введите 4 число: ";
+            std::cin >> n4;
+            result = LastNumSum(result, n4);
+            std::cout << "Промежуточный результат: " << result << "\n";
 
-            std::cout << "Введите 5 число: "; std::cin >> n5;
-            result = lastNumSum(result, n5);
-            std::cout << result << " + " << n5 << " = " << result << std::endl;
-
-            std::cout << "Итого: " << result << std::endl;
+            std::cout << "Введите 5 число: ";
+            std::cin >> n5;
+            result = LastNumSum(result, n5);
+            std::cout << "Итоговый результат: " << result << "\n";
             break;
         }
         case 6: {
             int x, y;
-            std::cout << "Введите делимое x: "; std::cin >> x;
-            std::cout << "Введите делитель y: "; std::cin >> y;
-            double res = safeDiv(x, y);
-            std::cout << "Результат деления: " << res << std::endl;
+            std::cout << "Введите делимое x: ";
+            std::cin >> x;
+            std::cout << "Введите делитель y: ";
+            std::cin >> y;
+            std::cout << "Результат деления: " << SafeDiv(x, y) << "\n";
             break;
         }
         case 7: {
             int a, b;
-            std::cout << "Введите число a: "; std::cin >> a;
-            std::cout << "Введите число b: "; std::cin >> b;
-            std::string res = makeDecision(a, b);
-            std::cout << "Результат: " << res << std::endl;
+            std::cout << "Введите число a: ";
+            std::cin >> a;
+            std::cout << "Введите число b: ";
+            std::cin >> b;
+            std::cout << "Результат: " << MakeDecision(a, b) << "\n";
             break;
         }
         case 8: {
             int a, b, c;
-            std::cout << "Введите число a: "; std::cin >> a;
-            std::cout << "Введите число b: "; std::cin >> b;
-            std::cout << "Введите число c: "; std::cin >> c;
-            std::cout << (sumTrio(a, b, c) ? "true" : "false") << std::endl;
+            std::cout << "Введите число a: ";
+            std::cin >> a;
+            std::cout << "Введите число b: ";
+            std::cin >> b;
+            std::cout << "Введите число c: ";
+            std::cin >> c;
+            std::cout << (SumTrio(a, b, c) ? "true\n" : "false\n");
             break;
         }
         case 9: {
             int n;
-            std::cout << "Введите возраст: "; std::cin >> n;
-            std::cout << age(n) << std::endl;
+            std::cout << "Введите возраст: ";
+            std::cin >> n;
+            std::cout << Age(n) << "\n";
             break;
         }
         case 10: {
             int day;
-            std::cout << "Введите номер дня недели (1-7): "; std::cin >> day;
-            printDays(day);
+            std::cout << "Введите номер дня недели (1-7): ";
+            std::cin >> day;
+            PrintDays(day);
             break;
         }
         case 11: {
             int n;
-            std::cout << "Введите число: "; std::cin >> n;
-            std::cout << reverseListNums(n) << std::endl;
+            std::cout << "Введите число: ";
+            std::cin >> n;
+            std::cout << ReverseListNums(n) << "\n";
             break;
         }
         case 12: {
             int base, exp;
-            std::cout << "Введите число x: "; std::cin >> base;
-            std::cout << "Введите степень y: "; std::cin >> exp;
-            std::cout << base << " в степени " << exp << " = " << pow(base, exp) << std::endl;
+            std::cout << "Введите число x: ";
+            std::cin >> base;
+            std::cout << "Введите степень y: ";
+            std::cin >> exp;
+            std::cout << base << " в степени " << exp << " = " << Pow(base, exp)
+                << "\n";
             break;
         }
         case 13: {
             int n;
-            std::cout << "Введите число: "; std::cin >> n;
-            std::cout << (equalNum(n) ? "true" : "false") << std::endl;
+            std::cout << "Введите число: ";
+            std::cin >> n;
+            std::cout << (EqualNum(n) ? "true\n" : "false\n");
             break;
         }
         case 14: {
             int n;
-            std::cout << "Введите высоту треугольника: "; std::cin >> n;
-            leftTriangle(n);
+            std::cout << "Введите высоту треугольника: ";
+            std::cin >> n;
+            LeftTriangle(n);
             break;
         }
         case 15: {
             int seed;
             std::cout << "Введите любое число для генерации случайного числа: ";
             std::cin >> seed;
-            guessGame(seed);
+            GuessGame(seed);
             break;
         }
         case 0:
@@ -570,5 +596,5 @@ int main() {
             std::cout << "Нет такой задачи.\n";
             break;
         }
-    }
+  }
 }
